@@ -3,8 +3,11 @@
 import { useContext } from "react"
 import { AppContext } from "../Context/AppContext"
 import { GetCatFact } from "../Hooks/GetcatFact"
+import { useBearStore } from "../zustand/zustand"
+import Control from "./Control"
 
 const Home = () => {
+  const bear = useBearStore((state) => state.bears)
     const {name} = useContext(AppContext)
     const{data, isLoading, isError, refetching} = GetCatFact()
     if(isLoading) return <p>Loading....</p>
@@ -20,6 +23,10 @@ const Home = () => {
       <p>{data.fact}</p>
       <br />
       <button onClick={refetching}>REfetch</button>
+      <div>
+        {bear}
+        <Control />
+      </div>
     </div>
   )
 }
