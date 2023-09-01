@@ -10,6 +10,7 @@ import Test2 from "./components/Test2"
 import Login from "./components/Login"
 import CountRedux from "./components/CountRedux"
 import Data from "./components/Data"
+import ThemeContext from "./Context/ThemeContext"
 
 
 
@@ -36,6 +37,7 @@ function App() {
             <Link to='count'>Count w/ RTK</Link>
             <Link to='data'>Data</Link>
         <AppContextProvider>
+          <ThemeContext>
               <Routes>
                 <Route path="/"  element={<Login />}/>
                 <Route path="/home" element={<Home />}/>
@@ -46,6 +48,7 @@ function App() {
                 <Route path="count" element={<CountRedux />} />
                 <Route path="data" element={<Data />} />
               </Routes>
+              </ThemeContext>
             </AppContextProvider>
           </QueryClientProvider>
         
